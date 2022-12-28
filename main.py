@@ -1,58 +1,114 @@
 from collections import Counter
-from probstructs import CountMinSketch
+import random
 
 
-def most_frequent_letters(text):
-    # Create an empty Csuros' counter with Frequent-Count
-    letter_counts = Counter()
+def count_frequent_letters(text):
+  """Count exactly the number of times each letter appears in the text."""
+  # create a dictionary to store the letter counts
+  letter_counts = {}
 
-    # Iterate through each character in the text and add it to the Csuros' counter with Frequent-Count
-    for char in text:
-        if char.isalpha():
-            letter_counts[char.lower()] += 1
+  # open the file and read its contents
 
-    # Find the most frequent letters using the most_common method of the Csuros' counter with Frequent-Count
-    # TODO: Change the parameter to 1,3,5 and 10
-    most_common_letters = letter_counts.most_common(3)
+  # iterate over each character in the file contents
+  for c in text:
+    # only count letters (ignore spaces, punctuation, etc.)
+    if c.isalpha():
+      # convert the letter to lowercase
+      c = c.lower()
+      # if the letter is already in the dictionary, increment its count
+      if c in letter_counts:
+        letter_counts[c] += 1
+      # if the letter is not yet in the dictionary, add it with a count of 1
+      else:
+        letter_counts[c] = 1
+  
+  sorted_counts = sorted(letter_counts.items(), key=lambda x: x[1], reverse=True)
 
-    # Print the letters with the highest count
-    # If there is a tie for the highest count, print all the letters with the highest count
-    for letter, count in most_common_letters:
-        print(f"{letter}: {count}")
+  # return the sorted dictionary
+  return sorted_counts
+
+def most_frequent_letters(data_stream, window_size):
+  # create a Counter to store the counts of letters in the window
+  counts = Counter()
+
+  # initialize a list to store the most frequent letters and their counts
+  most_frequent = []
+
+  # iterate over the data stream
+  for letter in data_stream:
+    # only count letters (ignore spaces, punctuation, etc.)
+    if letter.isalpha():
+      letter = letter.lower()
+      # add the new letter to the Counter
+      counts[letter] += 1
+
+      # if the Counter is full (i.e., has reached the window size), remove the oldest letter
+      if len(counts) > window_size:
+        del counts[letter[0]]
+
+      # if the letter has a count greater than or equal to the maximum count in the Counter, add it to the list of most frequent letters
+      if counts[letter] == counts.most_common(1)[0][1]:
+        most_frequent.append((letter, counts[letter]))
+
+  # return the list of most frequent letters and their counts
+  return most_frequent
+
+def approximateAlgorithm(text):
+  # create a Counter to store the letter counts
+  letter_counts = Counter()
 
 
-def most_frequent_letters_approx(text, error_rate, confidence_level):
-    # Create a Count-Min Sketch with the desired error rate and confidence level
-    sketch = CountMinSketch(error_rate, confidence_level)
 
-    # Iterate through each character in the text and add it to the Count-Min Sketch
-    for char in text:
-        if char.isalpha():
-            sketch.add(char.lower())
+  # iterate over each character in the file contents
+  for c in text:
+    # only count letters (ignore spaces, punctuation, etc.)
+    if c.isalpha():
+      c = c.lower()
+      letter_counts[c] += 1
 
-    # Create an empty dictionary to store the letter counts
-    letter_counts = {}
+  # get the most common letters and their counts
+  most_common = letter_counts.most_common()
 
-    # Iterate through each letter in the alphabet
-    for letter in "abcdefghijklmnopqrstuvwxyz":
-        # Get the approximate count of the letter from the Count-Min Sketch
-        count = sketch.estimate(letter)
-        # Add the count to the dictionary with the letter as the key and the count as the value
-        letter_counts[letter] = count
+  # return the most common letters and their counts
+  return most_common
 
-    # Sort the dictionary by the count of each letter in descending order
-    sorted_letter_counts = sorted(
-        letter_counts.items(), key=lambda x: x[1], reverse=True
-    )
+def approximate_count(text, sample_size):
+  # create a dictionary to store the counts of the letters in the sample
+  counts = {}
 
-    # Print the 3 letters with the highest count
-    for letter, count in sorted_letter_counts[:3]:
-        print(f"{letter}: {count}")
+  # initialize a variable to track the number of letters seen so far
+  n = 0
+
+  # iterate over each character in the text
+  for c in text:
+    # only count letters (ignore spaces, punctuation, etc.)
+    if c.isalpha():
+      c = c.lower()
+      n += 1
+
+      # with probability 1/n, add the letter to the sample and update its count
+      if random.random() < 1.0 / n:
+        if c in counts:
+          counts[c] += 1
+        else:
+          counts[c] = 1
+
+  # return the counts of the letters in the sample
+  return counts
 
 
 if __name__ == "__main__":
-    with open("anteroQuental.txt", "r") as f:
-        text = f.read()
+    file = open("collections/indianTailes.txt", "r")
+    text = file.read()
+    file.close()
 
-        most_frequent_letters(text)
-        most_frequent_letters_approx(text, 0.01, 0.95)
+    letters_freq = count_frequent_letters(text)
+    most_frequent = letters_freq[:3]
+    print("exact: " , most_frequent)
+
+
+    letter_counts = approximate_count(text, 1000)
+    print("Approximate: " , letter_counts)
+
+    
+

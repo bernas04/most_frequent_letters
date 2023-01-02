@@ -1,0 +1,104 @@
+Basic Counter
+    E : 17318
+    A : 16575
+    O : 11870
+    S : 9538
+    N : 8975
+    R : 8873
+    L : 7333
+    I : 6654
+    D : 5936
+    U : 5656
+    T : 5634
+    C : 4455
+    M : 3489
+    P : 2825
+    Q : 1803
+    G : 1743
+    B : 1742
+    Y : 1644
+    V : 1561
+    H : 1100
+    F : 1088
+    J : 567
+    Z : 507
+    X :  86
+    K :   6
+Total Elapsed Time : 3.375192
+
+Csuros Counter
+    E : 10553
+    A : 10359
+    O : 8412
+    S : 7261
+    N : 6987
+    R : 6930
+    L : 6132
+    I : 5876
+    D : 5499
+    U : 5324
+    T : 5308
+    C : 4455
+    M : 3489
+    P : 2825
+    Q : 1803
+    G : 1743
+    B : 1742
+    Y : 1644
+    V : 1561
+    H : 1100
+    F : 1088
+    J : 567
+    Z : 507
+    X :  86
+    K :   6
+    W :   0
+Total Elapsed Time : 3.394990
+
+Frequent Counter
+    E : 5719
+    A : 4975
+    O : 278
+    S :   5
+    U :   1
+Total Elapsed Time : 3.391922
+
+Absolute error csuros' counter
+    E : 6765
+    A : 6216
+    O : 3458
+    S : 2277
+    N : 1988
+    R : 1943
+    L : 1201
+    I : 778
+    D : 437
+    U : 332
+    T : 326
+
+Absolute error frequent counter
+    E : 11599
+    A : 11600
+    O : 11592
+    S : 9533
+    U : 5655
+
+Relative error csuros' counter
+    E : 0.390634
+    A : 0.375023
+    O : 0.291323
+    S : 0.238729
+    N : 0.221504
+    R : 0.218979
+    L : 0.163780
+    I : 0.116922
+    D : 0.073619
+    U : 0.058699
+    T : 0.057863
+
+Relative error frequent counter
+    E : 0.669766
+    A : 0.699849
+    O : 0.976580
+    S : 0.999476
+    U : 0.999823

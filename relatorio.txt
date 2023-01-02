@@ -108,3 +108,10 @@ The function returns a list of the frequent items that it identified.
 In addition to these differences in purpose, there are also some differences in the implementation of the two functions. 
 For example, the frequent_count function has an additional block of code that prints the counts in a formatted string, 
 and it has an additional parameter threshold that specifies the minimum count that an item must have in order to be considered frequent.
+
+
+
+
+
+FREQ COUNT DATA STREAMS
+https://micvog.com/2015/07/18/frequency-counting-algorithms-over-data-streams/

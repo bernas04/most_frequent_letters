@@ -24,20 +24,20 @@ Basic Counter
     Z : 507
     X :  86
     K :   6
-Total Elapsed Time : 3.375192
+Total Elapsed Time : 3.312318
 
 Csuros Counter
-    E : 10553
-    A : 10359
-    O : 8412
-    S : 7261
-    N : 6987
-    R : 6930
-    L : 6132
-    I : 5876
-    D : 5499
+    E : 10573
+    A : 10460
+    O : 8437
+    S : 7246
+    N : 6971
+    R : 6945
+    L : 6180
+    I : 5830
+    D : 5435
     U : 5324
-    T : 5308
+    T : 5322
     C : 4455
     M : 3489
     P : 2825
@@ -53,52 +53,38 @@ Csuros Counter
     X :  86
     K :   6
     W :   0
-Total Elapsed Time : 3.394990
+Total Elapsed Time : 3.326460
 
 Frequent Counter
-    E : 5719
-    A : 4975
-    O : 278
-    S :   5
-    U :   1
-Total Elapsed Time : 3.391922
+Total Elapsed Time : 3.333181
 
 Absolute error csuros' counter
-    E : 6765
-    A : 6216
-    O : 3458
-    S : 2277
-    N : 1988
-    R : 1943
-    L : 1201
-    I : 778
-    D : 437
+    E : 6745
+    A : 6115
+    O : 3433
+    S : 2292
+    N : 2004
+    R : 1928
+    L : 1153
+    I : 824
+    D : 501
     U : 332
-    T : 326
+    T : 312
 
 Absolute error frequent counter
-    E : 11599
-    A : 11600
-    O : 11592
-    S : 9533
-    U : 5655
 
 Relative error csuros' counter
-    E : 0.390634
-    A : 0.375023
-    O : 0.291323
-    S : 0.238729
-    N : 0.221504
-    R : 0.218979
-    L : 0.163780
-    I : 0.116922
-    D : 0.073619
+    E : 0.389479
+    A : 0.368929
+    O : 0.289217
+    S : 0.240302
+    N : 0.223287
+    R : 0.217288
+    L : 0.157234
+    I : 0.123835
+    D : 0.084400
     U : 0.058699
-    T : 0.057863
+    T : 0.055378
 
 Relative error frequent counter
-    E : 0.669766
-    A : 0.699849
-    O : 0.976580
-    S : 0.999476
-    U : 0.999823
+dict_keys(['E', 'A', 'O', 'S', 'N', 'R', 'L', 'I', 'D', 'U', 'T', 'C', 'M', 'P', 'Q', 'G', 'B', 'Y', 'V', 'H', 'F', 'J', 'Z', 'X', 'K']) dict_keys(['E', 'A', 'O', 'S', 'N', 'R', 'L', 'I', 'D', 'U', 'T', 'C', 'M', 'P', 'Q', 'G', 'B', 'Y', 'V', 'H', 'F', 'J', 'Z', 'X', 'K', 'W']) dict_keys([])

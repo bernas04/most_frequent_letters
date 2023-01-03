@@ -23,20 +23,20 @@ Basic Counter
     Z : 467
     X : 201
     Y :   5
-Total Elapsed Time : 3.247135
+Total Elapsed Time : 3.183773
 
 Csuros Counter
-    A : 10488
-    E : 10231
-    O : 9561
-    S : 7662
-    R : 6656
-    N : 5772
-    I : 5742
-    D : 5566
-    T : 5486
-    M : 5285
-    U : 5180
+    A : 10546
+    E : 10265
+    O : 9532
+    S : 7607
+    R : 6761
+    N : 5799
+    I : 5728
+    D : 5581
+    T : 5510
+    M : 5301
+    U : 5182
     C : 3991
     L : 3044
     P : 2810
@@ -52,52 +52,44 @@ Csuros Counter
     Y :   5
     K :   0
     W :   0
-Total Elapsed Time : 3.262356
+Total Elapsed Time : 3.198576
 
 Frequent Counter
-    A : 6299
-    E : 5508
-    O : 3288
-    S :  45
-    D :   2
-Total Elapsed Time : 3.262939
+    E :   1
+    R :   1
+Total Elapsed Time : 3.202735
 
 Absolute error csuros' counter
-    A : 6648
-    E : 6113
-    O : 4558
-    S : 2665
-    R : 1755
-    N : 822
-    I : 776
-    D : 593
-    T : 498
-    M : 267
-    U : 176
+    A : 6590
+    E : 6079
+    O : 4587
+    S : 2720
+    R : 1650
+    N : 795
+    I : 790
+    D : 578
+    T : 474
+    M : 251
+    U : 174
 
 Absolute error frequent counter
-    A : 10837
-    E : 10836
-    O : 10831
-    S : 10282
-    D : 6157
+    E : 16343
+    R : 8410
 
 Relative error csuros' counter
-    A : 0.387955
-    E : 0.374021
-    O : 0.322827
-    S : 0.258061
-    R : 0.208655
-    N : 0.124659
-    I : 0.119055
-    D : 0.096282
-    T : 0.083222
-    M : 0.048091
-    U : 0.032860
+    A : 0.384570
+    E : 0.371941
+    O : 0.324881
+    S : 0.263387
+    R : 0.196172
+    N : 0.120564
+    I : 0.121203
+    D : 0.093846
+    T : 0.079211
+    M : 0.045209
+    U : 0.032487
 
 Relative error frequent counter
-    A : 0.632411
-    E : 0.662996
-    O : 0.767122
-    S : 0.995642
-    D : 0.999675
+    E : 0.999939
+    R : 0.999881
+dict_keys(['A', 'E', 'O', 'S', 'R', 'N', 'I', 'D', 'T', 'M', 'U', 'C', 'L', 'P', 'V', 'Q', 'G', 'F', 'H', 'B', 'J', 'Z', 'X', 'Y']) dict_keys(['A', 'E', 'O', 'S', 'R', 'N', 'I', 'D', 'T', 'M', 'U', 'C', 'L', 'P', 'V', 'Q', 'G', 'F', 'H', 'B', 'J', 'Z', 'X', 'Y', 'K', 'W']) dict_keys(['E', 'R'])

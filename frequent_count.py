@@ -6,6 +6,8 @@ import random
 import string
 import time
 
+NUM_REPETITIONS = 5
+
 
 def letter_count(text):
     """function used to implement the basic counter algorithm"""
@@ -18,28 +20,23 @@ def letter_count(text):
     return sorted_counters
 
 
-def frequent_count(text, k):
-    """function used to implement the frequent counter algorithm"""
-    counts = {}
-    for element in text:
-        if element.isalpha():
-            element = remove_accents(element)
-            if element in counts:
-                counts[element] += 1
-            elif len(counts) < k - 1:
-                counts[element] = 1
+def MisraGriesAlgorithm(text, k):
+    """frequent counter algorithm"""
+    A = {}
+    for j in text:
+        if j.isalpha():
+            j = remove_accents(j)
+            if j in A:
+                A[j] = A[j] + 1
             else:
-                for i in list(counts.keys()):
-                    counts[i] -= 1
-                    if counts[i] == 0:
-                        del counts[i]
-
-    if len(counts) > 0:
-        return max(counts, key=counts.get), sorted(
-            counts.items(), key=lambda x: x[1], reverse=True
-        )
-    else:
-        return None, None
+                if len(A) < k - 1:
+                    A[j] = 1
+                else:
+                    for i in list(A.keys()):
+                        A[i] = A[i] - 1
+                        if A[i] == 0:
+                            del A[i]
+    return sorted(A.items(), key=lambda x: x[1], reverse=True)
 
 
 def incrementLetter(x, m):
@@ -61,8 +58,8 @@ def estimate_frequent_letters(text, threshold):
             if char != "":
                 letter_count[char] = incrementLetter(letter_count[char], threshold)
 
-    sorted_letters = sorted(letter_count.items(), key=lambda x: x[1], reverse=True)
-    return sorted_letters
+    csuros_counter = sorted(letter_count.items(), key=lambda x: x[1], reverse=True)
+    return csuros_counter
 
 
 # remove accents from a string
@@ -80,14 +77,17 @@ def remove_punctuation(text):
 
 def getArgs(argv):
     folder = "collections/"
-    opts, args = getopt.getopt(argv, "hf:", ["folder="])
+    K = 10
+    opts, args = getopt.getopt(argv, "hf:k:", ["folder="])
     for opt, arg in opts:
         if opt == "-h":
-            print("python3 frequent_count.py -f <folderToFiles>")
+            print("python3 frequent_count.py -f <folderToFiles> -k <number of K>")
             sys.exit()
         elif opt in ("-f", "--folder"):
             folder += arg
-    return folder
+        elif opt == "-k":
+            K = arg
+    return (folder, int(K))
 
 
 def getAllFiles(folder):
@@ -102,21 +102,20 @@ def getAllFiles(folder):
 
 if __name__ == "__main__":
 
-    folder = getArgs(sys.argv[1:])
+    folder, K = getArgs(sys.argv[1:])
 
     absoluteErrorCsurosCounterAvg = 0
     absoluteErrorFrequentCounterAvg = 0
     relativeErrorCsurosCounterAvg = 0
     relativeErrorFrequentCounterAvg = 0
-    numFiles = 0
 
     all_text_files = getAllFiles(folder)
+    numFiles = len(all_text_files)
 
     if not os.path.isdir("results"):
         os.mkdir("results")
 
     for file in all_text_files:
-        numFiles += 1
         start = time.time()
 
         # abre o ficheiro de texto
@@ -176,8 +175,8 @@ if __name__ == "__main__":
         # Csuros counter
         startAlgorithm = time.time()
         resultsFile.write("\n{:s}\n".format("Csuros Counter"))
-        sorted_letters = estimate_frequent_letters(text, 5000)
-        for letter, freq in sorted_letters:
+        csuros_counter = estimate_frequent_letters(text, 5000)
+        for letter, freq in csuros_counter:
             resultsFile.write("%5s : %3d\n" % (letter, freq))
 
         totalElapsedTime = time.time() - startAlgorithm + elapsedTimeTreatingFile
@@ -189,8 +188,9 @@ if __name__ == "__main__":
         # Frequent counter
         startAlgorithm = time.time()
         resultsFile.write("\n{:s}\n".format("Frequent Counter"))
-        frequent, dict_freq = frequent_count(text, 10)
-        for letter, freq in dict_freq:
+        frequent_counter = MisraGriesAlgorithm(text, K)
+
+        for letter, freq in frequent_counter:
             resultsFile.write("%5s : %3d\n" % (letter, freq))
 
         totalElapsedTime = time.time() - startAlgorithm + elapsedTimeTreatingFile
@@ -204,17 +204,25 @@ if __name__ == "__main__":
         relativeErrorsCsurosCounter = {}
         relativeErrorsFrequentCounter = {}
 
-        for letter, freq in exact_counter:
-            for letter2, freq2 in sorted_letters:
-                if letter == letter2 and freq != freq2:
-                    absoluteErrorsCsurosCounter[letter] = abs(freq - freq2)
-                    relativeErrorsCsurosCounter[letter] = (abs(freq - freq2)) / freq
+        exact_counter = dict(exact_counter)
 
-        for letter, freq in exact_counter:
-            for letter2, freq2 in dict_freq:
-                if letter == letter2 and freq != freq2:
-                    absoluteErrorsFrequentCounter[letter] = abs(freq - freq2)
-                    relativeErrorsFrequentCounter[letter] = (abs(freq - freq2)) / freq
+        for letter, app_freq in csuros_counter:
+            if letter in exact_counter:
+                real_count = exact_counter[letter]
+                if app_freq != real_count:
+                    absoluteErrorsCsurosCounter[letter] = abs(real_count - app_freq)
+                    relativeErrorsCsurosCounter[letter] = (
+                        abs(real_count - app_freq)
+                    ) / real_count
+
+        for letter, app_freq in frequent_counter:
+            if letter in exact_counter:
+                real_count = exact_counter[letter]
+                if app_freq != real_count:
+                    absoluteErrorsFrequentCounter[letter] = abs(real_count - app_freq)
+                    relativeErrorsFrequentCounter[letter] = (
+                        abs(real_count - app_freq)
+                    ) / real_count
 
         resultsFile.write("\n{:^s}\n".format("Absolute error csuros' counter"))
         for letter, freq in absoluteErrorsCsurosCounter.items():
@@ -233,29 +241,38 @@ if __name__ == "__main__":
             resultsFile.write("%5s : %3f\n" % (letter, freq))
 
         # calcular o erro absoluto e relativo médio
-        absoluteErrorCsurosCounterAvg += sum(
-            absoluteErrorsCsurosCounter.values()
-        ) / len(absoluteErrorsFrequentCounter)
+        if len(absoluteErrorsCsurosCounter) > 0:
+            absoluteErrorCsurosCounterAvg += sum(
+                absoluteErrorsCsurosCounter.values()
+            ) / len(absoluteErrorsCsurosCounter)
 
-        absoluteErrorFrequentCounterAvg += sum(
-            absoluteErrorsFrequentCounter.values()
-        ) / len(absoluteErrorsFrequentCounter)
+        if len(absoluteErrorsFrequentCounter) > 0:
+            absoluteErrorFrequentCounterAvg += sum(
+                absoluteErrorsFrequentCounter.values()
+            ) / len(absoluteErrorsFrequentCounter)
 
-        relativeErrorCsurosCounterAvg += sum(
-            relativeErrorsCsurosCounter.values()
-        ) / len(relativeErrorsFrequentCounter)
-        relativeErrorFrequentCounterAvg += sum(
-            relativeErrorsFrequentCounter.values()
-        ) / len(relativeErrorsFrequentCounter)
+        if len(relativeErrorsCsurosCounter) > 0:
+            relativeErrorCsurosCounterAvg += sum(
+                relativeErrorsCsurosCounter.values()
+            ) / len(relativeErrorsCsurosCounter)
 
+        if len(relativeErrorsFrequentCounter) > 0:
+            relativeErrorFrequentCounterAvg += sum(
+                relativeErrorsFrequentCounter.values()
+            ) / len(relativeErrorsFrequentCounter)
+
+        resultsFile.write(
+            f"{dict(exact_counter).keys()} {dict(csuros_counter).keys()} {dict(frequent_counter).keys()}"
+        )
         resultsFile.close()
 
     # calcular o erro absoluto e relativo médio de todos os ficheiros
     absoluteErrorCsurosCounterAvg = absoluteErrorCsurosCounterAvg / numFiles
     absoluteErrorFrequentCounterAvg = absoluteErrorFrequentCounterAvg / numFiles
+
     relativeErrorCsurosCounterAvg = relativeErrorCsurosCounterAvg / numFiles
     relativeErrorFrequentCounterAvg = relativeErrorFrequentCounterAvg / numFiles
-    time.sleep(1)
+
     print(
         "\
         %3d : %s\n\

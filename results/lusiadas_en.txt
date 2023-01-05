@@ -26,20 +26,20 @@ Basic Counter
     Q : 159
     X : 137
       :  16
-Total Elapsed Time : 4.861889
+Total Elapsed Time : 5.319472
 
 Csuros Counter
-    E : 11475
-    T : 9091
-    S : 8989
-    A : 8846
-    R : 8661
-    O : 8558
-    H : 8462
-    N : 8026
-    I : 7810
-    D : 6625
-    L : 6366
+    E : 11466
+    T : 9111
+    S : 9092
+    A : 8913
+    R : 8625
+    O : 8526
+    H : 8434
+    N : 8095
+    I : 7753
+    D : 6613
+    L : 6344
     U : 4692
     W : 4024
     G : 3984
@@ -55,43 +55,56 @@ Csuros Counter
     J : 193
     Q : 159
     X : 137
-Total Elapsed Time : 4.880372
+Total Elapsed Time : 5.338024
 
 Frequent Counter
-    E :   1
-Total Elapsed Time : 4.890293
+    E : 4479
+    T :   3
+    A :   2
+    D :   2
+    H :   1
+    N :   1
+Total Elapsed Time : 5.339960
 
 Absolute error csuros' counter
-    E : 9470
-    T : 4243
-    S : 4042
-    A : 3927
-    R : 3645
-    O : 3568
-    H : 3443
-    N : 3093
-    I : 2687
-    D : 1613
-    L : 1338
+    E : 9479
+    T : 4223
+    S : 3939
+    A : 3860
+    R : 3681
+    O : 3600
+    H : 3471
+    N : 3024
+    I : 2744
+    D : 1625
+    L : 1360
 
 Absolute error frequent counter
-    E : 20944
+    E : 16466
+    T : 13331
+    A : 12771
+    D : 8236
+    H : 11904
+    N : 11118
 
 Relative error csuros' counter
-    E : 0.452137
-    T : 0.318209
-    S : 0.310183
-    A : 0.307445
-    R : 0.296197
-    O : 0.294244
-    H : 0.289206
-    N : 0.278172
-    I : 0.255978
-    D : 0.195800
-    L : 0.173676
+    E : 0.452566
+    T : 0.316709
+    S : 0.302279
+    A : 0.302200
+    R : 0.299122
+    O : 0.296883
+    H : 0.291558
+    N : 0.271967
+    I : 0.261408
+    D : 0.197257
+    L : 0.176532
 
 Relative error frequent counter
-    E : 0.999952
-dict_keys(['E', 'T', 'S', 'A', 'R', 'O', 'H', 'N', 'I', 'D', 'L', 'U', 'W', 'G', 'F', 'M', 'C', 'P', 'Y', 'B', 'V', 'K', 'Z', 'J', 'Q', 'X', '']) 
-dict_keys(['E', 'T', 'S', 'A', 'R', 'O', 'H', 'N', 'I', 'D', 'L', 'U', 'W', 'G', 'F', 'M', 'C', 'P', 'Y', 'B', 'V', 'K', 'Z', 'J', 'Q', 'X']) 
-dict_keys(['E'])
+    E : 0.786154
+    T : 0.999775
+    A : 0.999843
+    D : 0.999757
+    H : 0.999916
+    N : 0.999910
+dict_keys(['E', 'T', 'S', 'A', 'R', 'O', 'H', 'N', 'I', 'D', 'L', 'U', 'W', 'G', 'F', 'M', 'C', 'P', 'Y', 'B', 'V', 'K', 'Z', 'J', 'Q', 'X', '']) dict_keys(['E', 'T', 'S', 'A', 'R', 'O', 'H', 'N', 'I', 'D', 'L', 'U', 'W', 'G', 'F', 'M', 'C', 'P', 'Y', 'B', 'V', 'K', 'Z', 'J', 'Q', 'X']) dict_keys(['E', 'T', 'A', 'D', 'H', 'N'])

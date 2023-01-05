@@ -1,0 +1,86 @@
+Basic Counter
+    E : 6244
+    T : 4795
+    O : 4372
+    A : 4075
+    I : 3471
+    H : 3468
+    S : 3325
+    R : 3322
+    N : 3248
+    L : 2400
+    D : 1998
+    U : 1819
+    M : 1753
+    Y : 1323
+    W : 1312
+    C : 1118
+    F : 1088
+    G : 925
+    B : 922
+    P : 774
+    V : 530
+    K : 436
+    J : 154
+    X :  62
+    Q :  30
+    Z :  16
+Total Elapsed Time : 0.776705
+
+Csuros Counter
+    E : 5617
+    T : 4795
+    O : 4372
+    A : 4075
+    I : 3471
+    H : 3468
+    S : 3325
+    R : 3322
+    N : 3248
+    L : 2400
+    D : 1998
+    U : 1819
+    M : 1753
+    Y : 1323
+    W : 1312
+    C : 1118
+    F : 1088
+    G : 925
+    B : 922
+    P : 774
+    V : 530
+    K : 436
+    J : 154
+    X :  62
+    Q :  30
+    Z :  16
+Total Elapsed Time : 0.781307
+
+Frequent Counter
+    E : 1052
+    O :   5
+    L :   1
+    I :   1
+    T :   1
+Total Elapsed Time : 0.784174
+
+Absolute error csuros' counter
+    E : 627
+
+Absolute error frequent counter
+    E : 5192
+    O : 4367
+    L : 2399
+    I : 3470
+    T : 4794
+
+Relative error csuros' counter
+    E : 0.100416
+
+Relative error frequent counter
+    E : 0.831518
+    O : 0.998856
+    L : 0.999583
+    I : 0.999712
+    T : 0.999791
+dict_keys(['E', 'T', 'O', 'A', 'I', 'H', 'S', 'R', 'N', 'L', 'D', 'U', 'M', 'Y', 'W', 'C', 'F', 'G', 'B', 'P', 'V', 'K', 'J', 'X', 'Q', 'Z']) dict_keys(['E', 'T', 'O', 'A', 'I', 'H', 'S', 'R', 'N', 'L', 'D', 'U', 'M', 'Y', 'W', 'C', 'F', 'G', 'B', 'P', 'V', 'K', 'J', 'X', 'Q', 'Z']) dict_keys(['E', 'O', 'L', 'I', 'T'])
